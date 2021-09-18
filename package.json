@@ -30,6 +30,6 @@
         "build/**/*"
     ],
     "dependencies": {
-        "@sithikus/numbers": "^0.3.1"
+        "@sithikus/numbers": "^1.0.0"
     }
 }
