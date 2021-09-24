@@ -1,9 +1,11 @@
+import { SudokuCage } from './models/sudoku-cage';
+import { KillerSudokuClass } from './sudokus/killer-sudoku-class';
 import { SixBySixSudokuClass } from './sudokus/six-by-six-sudoku-class';
 import { SudokuClass } from './sudokus/sudoku-class';
 import { SukanoClass } from './sudokus/sukano-class';
 import { UprightSixBySixSudokuClass } from './sudokus/upright-six-by-six-sudoku-class';
 
-export { };
+export {};
 
 export function Sudoku(): SudokuClass;
 export function Sudoku(): SudokuClass {
@@ -40,4 +42,9 @@ export function SixBySixSudoku(): SixBySixSudokuClass {
 export function UprightSixBySixSudoku(): UprightSixBySixSudokuClass;
 export function UprightSixBySixSudoku(): UprightSixBySixSudokuClass {
 	return new UprightSixBySixSudokuClass();
+}
+
+export function KillerSudoku(...args: any[]): KillerSudokuClass;
+export function KillerSudoku(cages: SudokuCage[]): KillerSudokuClass {
+	return new KillerSudokuClass(cages);
 }
