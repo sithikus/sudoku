@@ -50,7 +50,12 @@ export abstract class AbstractSudokuClass {
 	private overMax: (entry: any) => boolean = (value) => value > this.maxValue;
 
 	private validate(cell: Cell): boolean {
-		return this.rules.filter((rule) => !rule(cell)).length === 0;
+		for (let rule of this.rules) {
+			if (!rule(cell)) {
+				return false;
+			}
+		}
+		return true;
 	}
 
 	public solve(): boolean | undefined {
@@ -99,4 +104,10 @@ export abstract class AbstractSudokuClass {
 			)
 			.join('\n');
 	}
+}
+
+
+
+interface Execution {
+	[key: string]: number[];
 }
