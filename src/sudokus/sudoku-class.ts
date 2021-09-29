@@ -4,6 +4,8 @@ import { Cell } from '../models/cell';
 export class SudokuClass extends AbstractSudokuClass {
 	rowPerBox: number;
 	columnPerBox: number;
+	columnSeparations: number;
+	rowSeparations: number;
 	rules: ((cell: Cell) => boolean)[];
 
 	protected _cells: Cell[];
@@ -12,6 +14,8 @@ export class SudokuClass extends AbstractSudokuClass {
 		super(9, 9);
 		this.rowPerBox = 3;
 		this.columnPerBox = 3;
+		this.columnSeparations = this.maxValue / this.columnPerBox;
+		this.rowSeparations = this.maxValue / this.rowPerBox;
 
 		this._cells = this.rows.flatMap((r) => r.cells);
 
@@ -25,14 +29,12 @@ export class SudokuClass extends AbstractSudokuClass {
 			(cell) =>
 				this._cells.filter(
 					(c) =>
-						Math.ceil(c.column / (this.maxValue / this.columnPerBox)) ===
-							Math.ceil(cell.column / (this.maxValue / this.columnPerBox)) &&
-						Math.ceil(c.row / (this.maxValue / this.rowPerBox)) ===
-							Math.ceil(cell.row / (this.maxValue / this.rowPerBox)) &&
 						c.row !== cell.row &&
 						c.column !== cell.column &&
-						c.value === cell.value,
-				).length === 0,
+						c.value === cell.value &&
+						Math.ceil(c.column / this.columnSeparations) === Math.ceil(cell.column / this.columnSeparations) &&
+						Math.ceil(c.row / this.rowSeparations) === Math.ceil(cell.row / this.rowSeparations),
+				).length === 0, // box uniqueness
 		];
 	}
 }
