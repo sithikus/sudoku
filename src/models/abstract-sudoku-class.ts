@@ -106,8 +106,6 @@ export abstract class AbstractSudokuClass {
 	}
 }
 
-
-
 interface Execution {
 	[key: string]: number[];
 }

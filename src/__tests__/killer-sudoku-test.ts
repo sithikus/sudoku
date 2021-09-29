@@ -42,7 +42,8 @@ test('Killer Sudoku Constructor', () => {
 	expect(sudoku.rules.length).toBe(4);
 
 	expect(sudoku.solve()).toBe(true);
-	expect(sudoku.print()).toBe('8|7|6|3|2|4|5|1|9\n\
+	expect(sudoku.print()).toBe(
+		'8|7|6|3|2|4|5|1|9\n\
 1|3|5|6|7|9|8|2|4\n\
 2|4|9|8|1|5|7|3|6\n\
 7|9|8|1|6|3|4|5|2\n\
@@ -50,5 +51,6 @@ test('Killer Sudoku Constructor', () => {
 4|6|3|5|9|2|1|7|8\n\
 3|5|7|2|4|8|6|9|1\n\
 9|1|4|7|3|6|2|8|5\n\
-6|8|2|9|5|1|3|4|7')
+6|8|2|9|5|1|3|4|7',
+	);
 });
